@@ -34,3 +34,5 @@ purs/docset/purescript-local.docset/
 
 *.sublime-project
 *.sublime-workspace
+
+*.todo
