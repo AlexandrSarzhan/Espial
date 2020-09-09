@@ -108,13 +108,13 @@ bmark b' =
 
      display _ =
         div [ class_ "display" ] $
-        [ a [ href bm.url, target "_blank", class_ ("link f5 lh-title" <> guard bm.toread " unread")]
+        [ a [ href bm.url, class_ ("link f5 lh-title" <> guard bm.toread " unread")]
           [ text $ if S.null bm.title then "[no title]" else bm.title ]
         , br_
         , a [ href bm.url , class_ "link f7 gray hover-blue" ] [ text bm.url ]
         , a [ href (fromMaybe ("http://archive.is/" <> bm.url) (toMaybe bm.archiveUrl))
             , class_ ("link f7 gray hover-blue ml2" <> (guard (isJust (toMaybe bm.archiveUrl)) " green"))
-            , target "_blank", title "archive link"]
+            , title "archive link"]
             [ if isJust (toMaybe bm.archiveUrl) then text "☑" else text "☐" ]
         , br_
         , div [ class_ "description mt1 mid-gray" ] [ HH.slot _markdown unit Markdown.component bm.description absurd ]
