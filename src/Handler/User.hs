@@ -25,6 +25,13 @@ getUserTagsR :: UserNameP -> TagsP -> Handler Html
 getUserTagsR uname pathtags =
   _getUser uname SharedAll FilterAll pathtags
 
+getAuthUserTagsR :: TagsP -> Handler Html
+getAuthUserTagsR pathtags = do
+  musername <- maybeAuthUsername
+  case musername of
+    Nothing -> redirect (AuthR LoginR)
+    Just username -> redirect (UserTagsR (UserNameP username) pathtags)
+
 _getUser :: UserNameP -> SharedP -> FilterP -> TagsP -> Handler Html
 _getUser unamep@(UserNameP uname) sharedp' filterp' (TagsP pathtags) = do
   mauthuname <- maybeAuthUsername

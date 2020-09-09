@@ -21,6 +21,8 @@
 !/#UserNameP/#TagsP UserTagsR GET
 !/#UserNameP/feed.xml UserFeedR GET
 
+!/#TagsP AuthUserTagsR GET
+
 -- settings
 /Settings AccountSettingsR GET
 api/accountSettings EditAccountSettingsR POST
